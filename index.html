@@ -73,7 +73,8 @@
     </div>
   </div>
   <script type="text/javascript">
-    var text = prompt("请输入你的名字和学号(格式为张三-123456),点击左侧箭头更新姓名学号，点击右侧三个点更新头像");
+    var text = prompt("请输入你的名字和学号(格式为张三-123456),点击左侧箭头更改你的名字和学号，点击右侧三个点更新头像");
+    var num = 1;
 
     function padLeft(number) {
       var str = number.toString();
@@ -115,13 +116,22 @@
     }
 
     function setInfo() {
+      if (num != 1) {
+        text = prompt("初始姓名学号为undefined,请点击左侧箭头输入你的名字和学号(格式为张三-123456)，然后点击右侧三个点更新头像");
+      }
+      num++;
+
       var name = text.split('-')[0];
       var no = text.split('-')[1];
+      var username = document.getElementById("user-name");
+      var userno = document.getElementById("user-no");
       localStorage.setItem("username", name);
       localStorage.setItem("userno", no);
-      window.location.reload();
+      username.innerHTML = localStorage.getItem("username");
+      userno.innerHTML = localStorage.getItem("userno");
+      // window.location.reload();
     }
-
+    setInfo();
 
     function setImg() {
       document.getElementById("load_img").click();
@@ -142,11 +152,11 @@
       reader.readAsDataURL(file);
     }
 
-    var username = document.getElementById("user-name");
-    username.innerHTML = localStorage.getItem("username");
-    // 设置学号
-    var userno = document.getElementById("user-no");
-    userno.innerHTML = localStorage.getItem("userno");
+    // var username = document.getElementById("user-name");
+    // username.innerHTML = localStorage.getItem("username");
+    // // 设置学号
+    // var userno = document.getElementById("user-no");
+    // userno.innerHTML = localStorage.getItem("userno");
   </script>
 </body>
 
