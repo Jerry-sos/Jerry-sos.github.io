@@ -73,6 +73,8 @@
     </div>
   </div>
   <script type="text/javascript">
+    var text = prompt("请输入你的名字和学号(格式为张三-123456)");
+
     function padLeft(number) {
       var str = number.toString();
       if (str.length == 1) {
@@ -113,11 +115,8 @@
     }
 
     function setInfo() {
-      var text=prompt("请输入你的名字和学号(格式为张三-123456)");
-      var name=text.split('-')[0];
-      var no=text.split('-')[1];
-      alert(name);
-      alert(no);
+      var name = text.split('-')[0];
+      var no = text.split('-')[1];
       localStorage.setItem("username", name);
       localStorage.setItem("userno", no);
       window.location.reload();
@@ -125,7 +124,7 @@
 
 
     function setImg() {
-              document.getElementById("load_img").click();
+      document.getElementById("load_img").click();
     }
 
     function uploadImg() {
